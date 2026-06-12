@@ -42,9 +42,9 @@
         <div class="date-pill"><button type="button">‹</button><span id="exerciseDate">Today</span><button type="button">›</button></div>
         <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value" id="exerciseMetric">0 min</div><p class="muted small" id="exerciseSub">No activity yet</p></div><div class="ring"><span id="exerciseScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="exercise">
-          <button class="primary-btn" type="submit">＋ Add Exercise</button>
           <textarea placeholder="How did you move? Example: 30 min walk, basketball with Dryden, 20 min swim..." required></textarea>
-          <div class="form-row"><input type="number" min="0" step="1" placeholder="Minutes optional" /><input placeholder="Type optional: walk, run, strength..." /></div>
+          <div class="form-row"><input name="minutes" type="number" min="0" step="1" placeholder="Minutes optional" /><input name="kind" placeholder="Type optional: walk, run, strength..." /></div>
+          <button class="primary-btn" type="submit">Save Exercise</button>
         </form>
         <h3>Quick Add</h3><div class="chips" data-target="exercise"></div>
         <h3>Today’s Activities</h3><div class="domain-entries"></div>
@@ -55,9 +55,9 @@
         <div class="date-pill"><button type="button">‹</button><span id="nutritionDate">Today</span><button type="button">›</button></div>
         <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value" id="nutritionMetric">0 entries</div><p class="muted small">Track meals without overthinking.</p></div><div class="ring"><span id="nutritionScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="nutrition">
-          <button class="primary-btn" type="submit">＋ Add Food</button>
           <textarea placeholder="What did you eat or drink? Example: coffee with cinnamon, ground beef, salad, oatmeal..." required></textarea>
-          <div class="form-row"><input placeholder="Tag optional: breakfast, snack..." /></div>
+          <div class="form-row"><input name="tag" placeholder="Tag optional: breakfast, snack..." /></div>
+          <button class="primary-btn" type="submit">Save Food</button>
         </form>
         <h3>Quick Add</h3><div class="chips" data-target="nutrition"></div>
         <h3>Today’s Entries</h3><div class="domain-entries"></div>
@@ -85,9 +85,9 @@
         <div class="date-pill"><button type="button">‹</button><span id="connectionDate">Today</span><button type="button">›</button></div>
         <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value">Meaningful time</div><p class="muted small" id="connectionSub">No connection entries yet</p></div><div class="ring"><span id="connectionScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="connection">
-          <button class="primary-btn" type="submit">＋ Add Connection</button>
           <textarea placeholder="Example: quality talk, walk together, affection, intimacy, family time..." required></textarea>
-          <div class="form-row"><input placeholder="Optional: person/context" /></div>
+          <div class="form-row"><input name="context" placeholder="Optional: person/context" /></div>
+          <button class="primary-btn" type="submit">Save Connection</button>
         </form>
         <h3>Quick Add</h3><div class="chips" data-target="connection"></div>
         <h3>Today’s Entries</h3><div class="domain-entries"></div>
