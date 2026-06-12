@@ -1,19 +1,14 @@
-# Foundation OS
+# Foundation OS v2
 
-Dashboard-first PWA for the four foundational human inputs:
+A mobile-first PWA for tracking four human inputs: Exercise, Fuel, Sleep, and Connect.
 
-- Exercise / Movement
-- Nutrition / Fuel
-- Sleep / Recovery
-- Connection / Closeness
+## What's new in v2
+- Full UI facelift across all modules
+- Cleaner dashboard-first layout
+- Revised Sleep time boxes
+- Improved bottom navigation
+- Local-only storage
+- JSON export/import
 
-## Deploy to GitHub Pages
-
-1. Upload the contents of this folder to a GitHub repository.
-2. In GitHub, go to Settings → Pages.
-3. Set source to the main branch and root folder.
-4. Open the published Pages URL on iPhone and use Share → Add to Home Screen.
-
-## Data
-
-All data is stored locally in the browser using localStorage. Use Settings → Export JSON to back up entries.
+## Deploy
+Upload the full folder contents to GitHub Pages, Netlify, Vercel, or any static host.

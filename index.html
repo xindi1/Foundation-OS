@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#f7faff" />
   <title>Foundation OS</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
@@ -21,103 +21,92 @@
 
     <main>
       <section id="dashboard" class="view active" aria-labelledby="dashboardTitle">
-        <div class="hero-card">
-          <div>
-            <p class="eyebrow">Today</p>
-            <h2 id="todayScore">0%</h2>
-            <p id="todayDate" class="muted"></p>
-          </div>
-          <div class="ring" aria-hidden="true"><span id="ringValue">0</span></div>
-        </div>
-
-        <div class="grid cards" id="domainCards"></div>
-
-        <section class="panel">
-          <div class="panel-head">
-            <h3>7-day foundation</h3>
-            <span class="muted">logged days</span>
-          </div>
-          <div id="weekBars" class="week-bars"></div>
+        <p class="eyebrow">Today · <span id="todayDate"></span></p>
+        <section class="hero-card">
+          <h2 id="greeting">Good morning, Rob.</h2>
+          <p class="muted">Here’s how your foundation looks.</p>
+          <div class="summary-list" id="domainCards"></div>
         </section>
-
         <section class="panel">
-          <div class="panel-head">
-            <h3>Today’s entries</h3>
-            <span id="entryCount" class="muted">0 entries</span>
-          </div>
-          <div id="todayEntries" class="entry-list empty">No entries yet.</div>
+          <div class="panel-head"><h3>7-Day Trend</h3><span id="trendLabel" class="mini-badge">Building signal</span></div>
+          <div id="weekBars" class="trend"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head"><h3>Today’s entries</h3><span id="entryCount" class="muted small">0 entries</span></div>
+          <div id="todayEntries" class="entry-list"></div>
         </section>
       </section>
 
       <section id="exercise" class="view domain-view" data-domain="exercise">
         <div class="domain-title"><span>Movement</span><h2>Exercise</h2></div>
+        <div class="date-pill"><button type="button">‹</button><span id="exerciseDate">Today</span><button type="button">›</button></div>
+        <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value" id="exerciseMetric">0 min</div><p class="muted small" id="exerciseSub">No activity yet</p></div><div class="ring"><span id="exerciseScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="exercise">
-          <textarea placeholder="Example: 30 min walk, basketball with Dryden, 20 min swim..." required></textarea>
-          <div class="form-row">
-            <input type="number" min="0" step="1" placeholder="Minutes optional" />
-            <button type="submit">Save</button>
-          </div>
+          <button class="primary-btn" type="submit">＋ Add Exercise</button>
+          <textarea placeholder="How did you move? Example: 30 min walk, basketball with Dryden, 20 min swim..." required></textarea>
+          <div class="form-row"><input type="number" min="0" step="1" placeholder="Minutes optional" /><input placeholder="Type optional: walk, run, strength..." /></div>
         </form>
-        <div class="chips" data-target="exercise"></div>
-        <div class="domain-entries"></div>
+        <h3>Quick Add</h3><div class="chips" data-target="exercise"></div>
+        <h3>Today’s Activities</h3><div class="domain-entries"></div>
       </section>
 
       <section id="nutrition" class="view domain-view" data-domain="nutrition">
-        <div class="domain-title"><span>Fuel</span><h2>Nutrition</h2></div>
+        <div class="domain-title"><span>Nutrition</span><h2>Fuel</h2></div>
+        <div class="date-pill"><button type="button">‹</button><span id="nutritionDate">Today</span><button type="button">›</button></div>
+        <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value" id="nutritionMetric">0 entries</div><p class="muted small">Track meals without overthinking.</p></div><div class="ring"><span id="nutritionScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="nutrition">
-          <textarea placeholder="Example: coffee with cinnamon, ground beef, salad, oatmeal..." required></textarea>
-          <div class="form-row"><input placeholder="Tag optional: breakfast, snack..." /><button type="submit">Save</button></div>
+          <button class="primary-btn" type="submit">＋ Add Food</button>
+          <textarea placeholder="What did you eat or drink? Example: coffee with cinnamon, ground beef, salad, oatmeal..." required></textarea>
+          <div class="form-row"><input placeholder="Tag optional: breakfast, snack..." /></div>
         </form>
-        <div class="chips" data-target="nutrition"></div>
-        <div class="domain-entries"></div>
+        <h3>Quick Add</h3><div class="chips" data-target="nutrition"></div>
+        <h3>Today’s Entries</h3><div class="domain-entries"></div>
       </section>
 
       <section id="sleep" class="view domain-view" data-domain="sleep">
         <div class="domain-title"><span>Recovery</span><h2>Sleep</h2></div>
         <form class="quick-form sleep-form" data-domain="sleep">
-          <div class="two-col"><label>Bed <input type="time" name="bed"></label><label>Wake <input type="time" name="wake"></label></div>
-          <textarea placeholder="Optional note: quality, interruptions, nap, dreams..."></textarea>
+          <div class="sleep-times">
+            <div class="time-field"><label>Bedtime</label><div class="time-box"><span class="ico">▰</span><input type="time" name="bed"></div></div>
+            <div class="arrow">→</div>
+            <div class="time-field"><label>Wake time</label><div class="time-box"><span class="ico">☼</span><input type="time" name="wake"></div></div>
+          </div>
+          <div class="sleep-total"><div><div class="metric-label">Total sleep</div><strong id="sleepTotal">—</strong></div><span id="sleepBadge" class="mini-badge">Not set</span></div>
+          <div><div class="metric-label" style="margin-bottom:8px">Sleep quality</div><div class="quality" id="qualityBtns"><button type="button">Poor</button><button type="button">Fair</button><button type="button" class="active">Good</button><button type="button">Very Good</button><button type="button">Excellent</button></div></div>
+          <textarea placeholder="Quality, interruptions, nap, dreams..."></textarea>
           <button type="submit">Save Sleep</button>
         </form>
-        <div class="chips" data-target="sleep"></div>
+        <h3>Quick tags</h3><div class="chips" data-target="sleep"></div>
         <div class="domain-entries"></div>
       </section>
 
       <section id="connection" class="view domain-view" data-domain="connection">
-        <div class="domain-title"><span>Closeness</span><h2>Connection</h2></div>
+        <div class="domain-title"><span>Connection</span><h2>Connect</h2></div>
+        <div class="date-pill"><button type="button">‹</button><span id="connectionDate">Today</span><button type="button">›</button></div>
+        <section class="card metric-card accent"><div><div class="metric-label">Today</div><div class="metric-value">Meaningful time</div><p class="muted small" id="connectionSub">No connection entries yet</p></div><div class="ring"><span id="connectionScore">0</span><small>/100</small></div></section>
         <form class="quick-form" data-domain="connection">
+          <button class="primary-btn" type="submit">＋ Add Connection</button>
           <textarea placeholder="Example: quality talk, walk together, affection, intimacy, family time..." required></textarea>
-          <div class="form-row"><input placeholder="Optional: person/context" /><button type="submit">Save</button></div>
+          <div class="form-row"><input placeholder="Optional: person/context" /></div>
         </form>
-        <div class="chips" data-target="connection"></div>
-        <div class="domain-entries"></div>
+        <h3>Quick Add</h3><div class="chips" data-target="connection"></div>
+        <h3>Today’s Entries</h3><div class="domain-entries"></div>
       </section>
 
       <section id="settings" class="view">
-        <div class="domain-title"><span>Control</span><h2>Settings</h2></div>
-        <section class="panel">
-          <h3>Data</h3>
-          <div class="settings-actions">
-            <button id="exportBtn">Export JSON</button>
-            <label class="file-btn">Import JSON<input id="importFile" type="file" accept="application/json" hidden /></label>
-            <button id="clearBtn" class="danger">Clear All</button>
-          </div>
-          <p class="muted small">All entries are stored locally on this device.</p>
-        </section>
-        <section class="panel">
-          <h3>Product frame</h3>
-          <p class="muted">Foundation OS tracks the four human inputs that influence almost everything else: movement, fuel, recovery, and connection.</p>
-        </section>
+        <div class="domain-title"><span style="color:var(--blue)">Control</span><h2>More</h2></div>
+        <section class="panel"><h3>Data</h3><div class="settings-actions"><button id="exportBtn">Export JSON</button><label class="file-btn">Import JSON<input id="importFile" type="file" accept="application/json" hidden /></label><button id="clearBtn" class="danger">Clear All</button></div><p class="muted small">All entries are stored locally on this device.</p></section>
+        <section class="panel"><h3>Product frame</h3><p class="muted">Foundation OS tracks the four human inputs that influence almost everything else: movement, fuel, recovery, and connection.</p></section>
       </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Primary navigation">
       <button class="nav-btn active" data-view="dashboard">⌂<span>Home</span></button>
-      <button class="nav-btn" data-view="exercise">◍<span>Exercise</span></button>
+      <button class="nav-btn" data-view="exercise">↔<span>Exercise</span></button>
       <button class="nav-btn" data-view="nutrition">◒<span>Fuel</span></button>
       <button class="nav-btn" data-view="sleep">☾<span>Sleep</span></button>
       <button class="nav-btn" data-view="connection">♡<span>Connect</span></button>
-      <button class="nav-btn" data-view="settings">⚙<span>More</span></button>
+      <button class="nav-btn" data-view="settings">☰<span>More</span></button>
     </nav>
   </div>
   <script src="app.js"></script>
