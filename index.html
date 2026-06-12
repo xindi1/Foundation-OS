@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Foundation OS</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Human Inputs Dashboard</p>
+        <h1>Foundation OS</h1>
+      </div>
+      <button id="themeBtn" class="icon-btn" aria-label="Toggle theme">◐</button>
+    </header>
+
+    <main>
+      <section id="dashboard" class="view active" aria-labelledby="dashboardTitle">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">Today</p>
+            <h2 id="todayScore">0%</h2>
+            <p id="todayDate" class="muted"></p>
+          </div>
+          <div class="ring" aria-hidden="true"><span id="ringValue">0</span></div>
+        </div>
+
+        <div class="grid cards" id="domainCards"></div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>7-day foundation</h3>
+            <span class="muted">logged days</span>
+          </div>
+          <div id="weekBars" class="week-bars"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h3>Today’s entries</h3>
+            <span id="entryCount" class="muted">0 entries</span>
+          </div>
+          <div id="todayEntries" class="entry-list empty">No entries yet.</div>
+        </section>
+      </section>
+
+      <section id="exercise" class="view domain-view" data-domain="exercise">
+        <div class="domain-title"><span>Movement</span><h2>Exercise</h2></div>
+        <form class="quick-form" data-domain="exercise">
+          <textarea placeholder="Example: 30 min walk, basketball with Dryden, 20 min swim..." required></textarea>
+          <div class="form-row">
+            <input type="number" min="0" step="1" placeholder="Minutes optional" />
+            <button type="submit">Save</button>
+          </div>
+        </form>
+        <div class="chips" data-target="exercise"></div>
+        <div class="domain-entries"></div>
+      </section>
+
+      <section id="nutrition" class="view domain-view" data-domain="nutrition">
+        <div class="domain-title"><span>Fuel</span><h2>Nutrition</h2></div>
+        <form class="quick-form" data-domain="nutrition">
+          <textarea placeholder="Example: coffee with cinnamon, ground beef, salad, oatmeal..." required></textarea>
+          <div class="form-row"><input placeholder="Tag optional: breakfast, snack..." /><button type="submit">Save</button></div>
+        </form>
+        <div class="chips" data-target="nutrition"></div>
+        <div class="domain-entries"></div>
+      </section>
+
+      <section id="sleep" class="view domain-view" data-domain="sleep">
+        <div class="domain-title"><span>Recovery</span><h2>Sleep</h2></div>
+        <form class="quick-form sleep-form" data-domain="sleep">
+          <div class="two-col"><label>Bed <input type="time" name="bed"></label><label>Wake <input type="time" name="wake"></label></div>
+          <textarea placeholder="Optional note: quality, interruptions, nap, dreams..."></textarea>
+          <button type="submit">Save Sleep</button>
+        </form>
+        <div class="chips" data-target="sleep"></div>
+        <div class="domain-entries"></div>
+      </section>
+
+      <section id="connection" class="view domain-view" data-domain="connection">
+        <div class="domain-title"><span>Closeness</span><h2>Connection</h2></div>
+        <form class="quick-form" data-domain="connection">
+          <textarea placeholder="Example: quality talk, walk together, affection, intimacy, family time..." required></textarea>
+          <div class="form-row"><input placeholder="Optional: person/context" /><button type="submit">Save</button></div>
+        </form>
+        <div class="chips" data-target="connection"></div>
+        <div class="domain-entries"></div>
+      </section>
+
+      <section id="settings" class="view">
+        <div class="domain-title"><span>Control</span><h2>Settings</h2></div>
+        <section class="panel">
+          <h3>Data</h3>
+          <div class="settings-actions">
+            <button id="exportBtn">Export JSON</button>
+            <label class="file-btn">Import JSON<input id="importFile" type="file" accept="application/json" hidden /></label>
+            <button id="clearBtn" class="danger">Clear All</button>
+          </div>
+          <p class="muted small">All entries are stored locally on this device.</p>
+        </section>
+        <section class="panel">
+          <h3>Product frame</h3>
+          <p class="muted">Foundation OS tracks the four human inputs that influence almost everything else: movement, fuel, recovery, and connection.</p>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <button class="nav-btn active" data-view="dashboard">⌂<span>Home</span></button>
+      <button class="nav-btn" data-view="exercise">◍<span>Exercise</span></button>
+      <button class="nav-btn" data-view="nutrition">◒<span>Fuel</span></button>
+      <button class="nav-btn" data-view="sleep">☾<span>Sleep</span></button>
+      <button class="nav-btn" data-view="connection">♡<span>Connect</span></button>
+      <button class="nav-btn" data-view="settings">⚙<span>More</span></button>
+    </nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
