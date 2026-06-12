@@ -19,7 +19,7 @@ function todayKey(d=new Date()){
 }
 function parseKey(key){ return new Date(`${key}T12:00:00`); }
 function shiftDate(key, delta){ const d=parseKey(key); d.setDate(d.getDate()+delta); return todayKey(d); }
-function timeText(iso){ return new Date(iso).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+function timeText(iso){ return new Date(iso).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', hour12:false}); }
 function dateLabel(key){
   if(key === todayKey()) return 'Today';
   const d=parseKey(key);

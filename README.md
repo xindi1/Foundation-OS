@@ -1,6 +1,9 @@
-# Foundation OS v2
+# Foundation OS v2.1
 
 A mobile-first PWA for tracking four human inputs: Exercise, Fuel, Sleep, and Connect.
+
+## What's new in v2.1
+- Entry timestamps now display in 24-hour time
 
 ## What's new in v2
 - Full UI facelift across all modules
