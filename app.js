@@ -26,14 +26,12 @@ function dateLabel(key){
   return d.toLocaleDateString([], {weekday:'short', month:'short', day:'numeric'});
 }
 function fullDateLabel(key){ return parseKey(key).toLocaleDateString([], {weekday:'short', month:'short', day:'numeric', year:'numeric'}); }
-
 function greetingText(){
   const hour = new Date().getHours();
   if(hour < 12) return 'Good morning, Rob.';
   if(hour < 17) return 'Good afternoon, Rob.';
   return 'Good evening, Rob.';
 }
-
 function loadEntries(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
 function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); }
 function getEntries(domain, key=activeDate){ return entries.filter(e => e.date === key && (!domain || e.domain === domain)); }
@@ -148,7 +146,7 @@ function renderDates(){
 function renderMetrics(){
   const mins=exerciseMinutes(); const exCount=getEntries('exercise').length;
   setText('exerciseMetric', `${mins || 0} min`);
-  setText('exerciseSub', exCount?`${exCount} activity${exCount===1?'':'ies'}`:'No activity yet');
+  setText('exerciseSub', exCount?`${exCount} session${exCount===1?'':'s'}`:'No sessions yet');
   setText('exerciseScore', getDomainScore('exercise'));
   const nutCount=getEntries('nutrition').length;
   setText('nutritionMetric', `${nutCount} entr${nutCount===1?'y':'ies'}`);
