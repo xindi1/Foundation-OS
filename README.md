@@ -1,4 +1,4 @@
-# Foundation OS v2.1
+# Foundation OS v2.3
 
 A mobile-first PWA for tracking four human inputs: Exercise, Fuel, Sleep, and Connect.
 
@@ -15,3 +15,7 @@ A mobile-first PWA for tracking four human inputs: Exercise, Fuel, Sleep, and Co
 
 ## Deploy
 Upload the full folder contents to GitHub Pages, Netlify, Vercel, or any static host.
+
+
+## v2.3
+- Dynamic greeting based on time of day

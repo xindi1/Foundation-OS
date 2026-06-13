@@ -26,6 +26,14 @@ function dateLabel(key){
   return d.toLocaleDateString([], {weekday:'short', month:'short', day:'numeric'});
 }
 function fullDateLabel(key){ return parseKey(key).toLocaleDateString([], {weekday:'short', month:'short', day:'numeric', year:'numeric'}); }
+
+function greetingText(){
+  const hour = new Date().getHours();
+  if(hour < 12) return 'Good morning, Rob.';
+  if(hour < 17) return 'Good afternoon, Rob.';
+  return 'Good evening, Rob.';
+}
+
 function loadEntries(){ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch { return []; } }
 function persist(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); }
 function getEntries(domain, key=activeDate){ return entries.filter(e => e.date === key && (!domain || e.domain === domain)); }
@@ -150,6 +158,7 @@ function renderMetrics(){
   setText('connectionScore', getDomainScore('connection'));
 }
 function renderDashboard(){
+  setText('greeting', greetingText());
   const score=foundationScore();
   setText('todayScore', `${score}%`); setText('ringValue', score);
   const mainRing=document.querySelector('.ring'); if(mainRing) mainRing.style.opacity=.45+(score/100)*.55;
